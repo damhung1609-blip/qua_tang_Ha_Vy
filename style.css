@@ -1,0 +1,237 @@
+/* =========================================
+   1. NỀN VÀ BỐ CỤC CHUNG
+========================================= */
+/* --- NỀN CŨ GIỮ NGUYÊN BỐ CỤC, CHỈ THAY ĐỔI BACKGROUND --- */
+body {
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* Nền Gradient mượt mà nhẹ nhàng */
+    background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 50%, #ff758c 100%);
+    background-size: 200% 200%;
+    animation: gradientBG 10s ease infinite;
+    font-family: 'Arial', sans-serif;
+    text-align: center;
+    overflow: hidden;
+    position: relative;
+}
+
+/* Hiệu ứng chuyển động màu nền */
+@keyframes gradientBG {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* =========================================
+   2. HỘP QUÀ TẶNG 
+========================================= */
+.container {
+    background: rgba(255, 255, 255, 0.7);
+    padding: 40px;
+    border-radius: 20px;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+    max-width: 800px;
+}
+
+h1 {
+    color: #ff4757;
+    font-size: 26px;
+    margin-bottom: 25px;
+}
+
+/* =========================================
+   3. HAI NÚT BẤM
+========================================= */
+button {
+    font-size: 16px;
+    padding: 12px 25px;
+    margin: 10px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: 0.2s;
+}
+
+#btn-yes {
+    background-color: #2ed573;
+    color: white;
+}
+
+#btn-yes:hover {
+    background-color: #27ae60;
+    transform: scale(1.1); /* Phóng to nhẹ khi rà chuột vào nút Đồng ý */
+}
+
+#btn-no {
+    background-color: #ff4757;
+    color: white;
+    position: relative; /* Bắt buộc có để JavaScript điều khiển chạy trốn */
+}
+
+/* =========================================
+   4. Ảnh Bay
+========================================= */
+.image-gallery {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none; /* Cho phép click chuột "xuyên" qua ảnh để bấm nút */
+    z-index: -1; /* Đẩy toàn bộ ảnh ra phía sau làm nền */
+}
+
+/* Ép khung chung và giữ nguyên vẹn chi tiết cho cả 10 ảnh */
+.image-gallery img {
+    position: absolute;
+    width: 140px;           
+    height: 140px;          
+    object-fit: contain; /* Cứu tinh giúp ảnh không bị lẹm hay xén mất */
+    border-radius: 15px;
+    box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+    background-color: rgba(255, 255, 255, 0.4); /* Nền mờ giúp nhìn rõ toàn bộ khung ảnh */
+    animation: floating 4s infinite alternate ease-in-out;
+}
+
+/* Hiệu ứng trôi */
+@keyframes floating {
+    0% { transform: translateY(0px) rotate(-10deg); }
+    100% { transform: translateY(-30px) rotate(15deg); }
+}
+
+/* =========================================
+   5. TỌA ĐỘ VÀ ĐỘ TRỄ (ĐẨY HẾT RA RÉP MÀN HÌNH)
+========================================= */
+/* KHU VỰC LỀ TRÁI (Ép sát mép trái màn hình) */
+.image-gallery img:nth-child(1) { top: 5%; left: 15%; animation-delay: 0s; }
+.image-gallery img:nth-child(6) { top: 30%; left: 5%; animation-delay: 0.5s; }
+.image-gallery img:nth-child(3) { top: 55%; left: 2%; animation-delay: 1.5s; }
+.image-gallery img:nth-child(9) { top: 80%; left: 10%; animation-delay: 2.5s; }
+
+/* KHU VỰC LỀ PHẢI (Ép sát mép phải màn hình) */
+.image-gallery img:nth-child(2) { top: 5%; right: 20%; animation-delay: 1s; }
+.image-gallery img:nth-child(7) { top: 28%; right: 5%; animation-delay: 1.2s; }
+.image-gallery img:nth-child(8) { top: 52%; right: 2%; animation-delay: 2s; }
+.image-gallery img:nth-child(5) { top: 78%; right: 10%; animation-delay: 3s; }
+
+/* KHU VỰC DƯỚI CÙNG (Dạt xuống sát đáy màn hình) */
+.image-gallery img:nth-child(4) { top: 88%; left: 33%; animation-delay: 3.5s; }
+.image-gallery img:nth-child(10) { top: 86%; right: 33%; animation-delay: 4s; }: 4s; }
+/*trên cùng*//* KHU VỰC TRUNG TÂM PHÍA TRÊN (Vùng khoanh đỏ) */
+/* Bức ảnh thứ 11 (nằm ở nửa bên trái của ô đỏ) */
+.image-gallery img:nth-child(11) { 
+    top: 10%; 
+    left: 8%; 
+    animation-delay: 0.8s; 
+}
+
+/* Bức ảnh thứ 12 (nằm ở nửa bên phải của ô đỏ) */
+.image-gallery img:nth-child(12) { 
+    top: 13%; 
+    right: 58%; 
+    animation-delay: 2.2s; 
+}
+
+/* =========================================
+   8. HIỆU ỨNG MÓN QUÀ XUẤT HIỆN
+========================================= */
+.hidden-gift {
+    display: none; /* Giấu hoàn toàn lúc ban đầu */
+    opacity: 0;    /* Độ trong suốt = 0 */
+    margin-top: 25px;
+    transition: opacity 2s ease-in-out; /* Phép thuật từ từ hiện ra trong 2 giây */
+}
+
+.gift-img {
+    width: 300px; max-width: 90vw;
+    border-radius: 20px; 
+    box-shadow: 0 15px 25px rgba(0,0,0,0.3);
+    border: 5px solid white;
+}
+
+.gift-text {
+    color: #ff4757;
+    font-size: 20px;
+    font-weight: bold;
+    margin-top: 15px;
+    animation: pulsate 1.5s infinite alternate; /* Mượn lại hiệu ứng chữ phát sáng */
+}
+/* =========================================
+   7. HIỆU ỨNG MƯA TRÁI TIM RƠI
+========================================= */
+.falling-heart {
+    position: fixed;
+    top: -10%;
+    display: inline-block; /* Lệnh cứu tinh: Ép khối div co lại ôm sát vào hình trái tim */
+    z-index: 9999; /* Đẩy lên lớp cao nhất */
+    pointer-events: none;
+    animation: fall linear forwards;
+    filter: saturate(200%) contrast(120%) drop-shadow(0 0 4px rgba(255, 0, 0, 0.8));
+}
+
+@keyframes fall {
+    0% { 
+        transform: translateY(0) rotate(0deg); 
+        opacity: 1; 
+    }
+    100% { 
+        transform: translateY(120vh) rotate(360deg); 
+        opacity: 0; 
+    }
+}
+
+/* Hiệu ứng đĩa than quay tròn */
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.vinyl-disc {
+    width: 130px;
+    height: 130px;
+    border-radius: 50%;
+    background: #111;
+    border: 6px solid #333;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto 15px auto;
+    animation: spin 4s linear infinite; /* Quay liên tục */
+    animation-play-state: paused; /* Lúc đầu đứng im */
+}
+
+/* Khi đang phát nhạc thì đĩa mới quay */
+.vinyl-disc.playing {
+    animation-play-state: running;
+}
+
+.vinyl-disc {
+    width: 220px; /* Đĩa to hơn nữa cho đã */
+    height: 220px;
+    border-radius: 50%;
+    background: #111;
+    border: 8px solid #333;
+    box-shadow: 0 15px 30px rgba(0,0,0,0.4);
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto 15px auto;
+    animation: spin 4s linear infinite;
+    animation-play-state: paused;
+}
+
+.vinyl-center-img {
+    width: 150px; /* Ảnh bìa phóng to lên 150px (gần lấp đầy đĩa) */
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 4px solid #fff; /* Thêm viền trắng quanh ảnh cho nổi bật */
+}
