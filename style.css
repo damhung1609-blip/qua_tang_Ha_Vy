@@ -235,3 +235,43 @@ button {
     object-fit: cover;
     border: 4px solid #fff; /* Thêm viền trắng quanh ảnh cho nổi bật */
 }
+/* =======================================================
+   TỐI ƯU GIAO DIỆN CHO ĐIỆN THOẠI (MOBILE RESPONSIVE) 
+   ======================================================= */
+@media screen and (max-width: 768px) {
+    /* Ép các hộp nội dung nhỏ lại, ôm vừa màn hình điện thoại */
+    .container, #envelope-box, #letter-content-box, .menu-box {
+        width: 92% !important; /* Chiếm 92% chiều rộng màn hình */
+        padding: 20px 15px !important;
+        margin: 15px auto !important;
+        border-radius: 18px !important;
+    }
+
+    /* Chữ nhỏ lại một chút để không bị rớt dòng lộn xộn */
+    h3 {
+        font-size: 20px !important;
+    }
+    
+    p, #typing-letter {
+        font-size: 14px !important;
+    }
+
+    /* Tối ưu các nút bấm: to ra bề ngang cho dễ chạm bằng ngón tay */
+    button, button.btn-primary, #btn-main-yes, #btn-open-envelope {
+        width: 100% !important; /* Dàn đều nút ra 2 bên */
+        padding: 12px !important;
+        font-size: 14px !important;
+        margin-bottom: 10px !important;
+        white-space: pre-wrap !important; /* Cho phép chữ tự xuống dòng nếu quá dài */
+    }
+
+    /* Thu nhỏ lại cái icon phong bì cho cân đối */
+    #envelope-box div {
+        font-size: 50px !important;
+    }
+    
+    /* Danh sách bài hát tự động co dãn tốt hơn */
+    div[style*="max-width: 320px"] {
+        max-width: 100% !important;
+    }
+}
