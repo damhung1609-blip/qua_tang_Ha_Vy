@@ -1,5 +1,5 @@
 // --- 1. MẬT KHẨU CÂU 1 & CÂU 2 ---
-const correctPassword = "25/08/2008"; // <--- ĐIỀN ĐÁP ÁN ĐÚNG CỦA HÙNG VÀO ĐÂY
+const correctPassword = "25/08/2008"; 
 const step1 = document.getElementById('step-1');
 const step2 = document.getElementById('step-2');
 const passInput = document.getElementById('pass-input');
@@ -47,7 +47,7 @@ const typingText = document.getElementById('typing-text');
 
 // --- KỊCH BẢN MÁY ĐÁNH CHỮ CHO BỨC THƯ ---
 const letterText = `Gửi Hà Vy ! 🎁💖
-Trước tiên chúc Hà Vy của Hùng tuổi mới lúc nào cũng xinh đẹp, vui vẻ! Nhớ lại lúc mới quen không có nghĩ là gắn bó được lâu lâu vậy đâu. Nhắn tin với Vy vui lắm, thích Vy lắm nhưng mà Hùng cũng không nghĩ sẽ có thể trở thành ny của Vy đâu 😭. Tự ti lắm luôn á, học không giỏi, nhan sắc thì cũng bình thường, ăn nói thì vụng về, lại còn bị gọi là trẻ con nữa, không có xứng với con người vừa giỏi vừa đáng iuu này huhuhu. Hùng đang cố gắng từng ngày rùi. Trước tới giờ thấy Vy dễ thương và thật là đặc biệt thế nào á, mặc dù chỉ là thông qua những tin nhắn đó. Cảm giác nhắn tin rất khác so với những người bình thường. Hùng thích Vy là thật đó, dành tình cảm cho Vy cũng là thật, hi vọng là Vy cũng thật lòng với Hùng, muốn xây dựng mối quan hệ này nghiêm túc lắm 🥺. Đôi lúc có thể không hiểu nhau, giận nhau nhưng mà Hùng mong rằng chúng ta có thể giãi bày cho nhau được biết và có thể đồng hành thật lâu và cùng cố gắng vì tình yêu này. Hùng xin lỗi vì những lần cư xử vụng về trong mối quan hệ này và cũng thật cảm ơn Vy vì đã xuất hiện trong cuộc đời Hùng. Tóm lại thì hôm nay Chúc Vy snvv nhaaaaaaa, mãi iuuuuu <3
+Trước tiên chúc Hà Vy của Hùng tuổi mới lúc nào cũng xinh đẹp, vui vẻ! Nhớ lại lúc mới quen không có nghĩ là gắn bó được lâu lâu vậy đâu. Nhắn tin với Vy vui lắm, thích Vy lắm nhưng mà Hùng cũng không nghĩ sẽ có thể trở thành ny của Vy đâu 😭. Tự ti lắm luôn á, học không giỏi, nhan sắc thì cũng bình thường, ăn nói thì vụng về, lại còn bị gọi là trẻ con nữa, không có xứng với con người vừa giỏi vừa đáng iuu này huhuhu. Hùng đang cố gắng từng ngày rùi. Trước tới giờ thấy Vy dễ thương và thật là đặc biệt thế nào á, mặc dù chỉ là thông qua những tin nhắn đó. Cảm giác nhắn tin rất khác so với những người bình thường. Hùng thích Vy là thật đó, dành tình cảm cho Vy cũng là thật, hi vọng là Vy cũng thật lòng với Hùng, muốn xây dựng mối quan hệ này nghiêm túc lắm 🥺. Đôi lúc có thể không hiểu nhau, giận nhau nhưng mà Hùng mong rằng chúng ta có thể giãi bày cho nhau được biết và có thể đồng hành thật lâu và cùng cố gắng vì tình yêu này. Hùng xin lỗi vì những lần cư xử vụng về trong mối quan hệ này và cũng thật cảm ơn Vy vì đã xuất hiện trong cuộc đời Hùng. Đôi lúc nghĩ sẽ không hoàn thành được cái này vì những gián đoạn nhưng mà may sao vẫn có thể tới được tay Vy. Tóm lại thì hôm nay Chúc Vy snvv nhaaaaaaa, mãi iuuuuu <3
 Văn Hùng`;
 
 let letterIndex = 0;
@@ -61,8 +61,7 @@ function typeWriterLetter() {
     }
 }
 
-// Hàm mở phần Thư (được gọi khi bấm nút Thư Chúc Mừng ở menu)
-// Lưu ý: Đảm bảo trong hàm openSection của Hùng gọi tới typeWriterLetter khi chọn đúng phần 'letter-section'
+
 
 btnNo.addEventListener('mouseover', () => {
     const x = Math.random() * (window.innerWidth - btnNo.offsetWidth - 50);
@@ -125,8 +124,6 @@ function openSection(sectionId) {
     if(target) {
         target.style.display = 'block';
         
-        // Nếu mở đúng phần âm nhạc thì hiện nút, còn không thì nó đã nằm trong div music-section rồi
-        // Code của Hùng đã tự quản lý ẩn hiện theo music-section rồi nên Hùng không cần lo!
         
         if(sectionId === 'letter-section') {
             typingLetterElement.innerHTML = '';
@@ -225,7 +222,7 @@ function toggleMusic() {
     }
 }
 
-// Cập nhật lại hàm changeMusic để luôn hiện nút "Tạm dừng" khi đổi bài
+// hàm changeMusic để luôn hiện nút "Tạm dừng" khi đổi bài
 function changeMusic(songFileName, songTitle, coverImgUrl) {
     bgMusic.pause();
     bgMusic.src = songFileName;
